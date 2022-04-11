@@ -2,6 +2,8 @@ package baseball;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 public class Game {
 
@@ -18,7 +20,14 @@ public class Game {
 		
 		int idx = 0;
 		while(gameBalls.size() <3 )  {
-			gameBalls.add(Ball.createBall(idx++, 7));
+			Random random = new Random();
+			int newBallValue = random.nextInt(9) + 1;
+			
+			List<Integer> valueList = gameBalls.stream().map(ball -> ball.getValue()).collect(Collectors.toList());
+			boolean isDuplicate = valueList.contains(newBallValue);
+			if(!isDuplicate) {
+				gameBalls.add(Ball.createBall(idx++, newBallValue));	
+			}
 		}
 	}
 
