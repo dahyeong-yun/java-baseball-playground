@@ -5,13 +5,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import study.baseball.Ball;
-import study.baseball.BallStatus;
+import baseball.Ball;
+import baseball.BallStatus;
 
 class BallTest {
 
     @Test
-    @DisplayName("공은 위치와 값을 같는다.")
+    @DisplayName("공은 위치와 값을 갖는다")
     void setBall() {
         int ballOrder = 1;
         int ballValue = 2;
