@@ -6,8 +6,6 @@ public class Ball {
     private final int ballValue;
 
     private Ball(int ballOrder, int ballValue) {
-    	validate(ballOrder);
-    	
         this.ballOrder = ballOrder;
         this.ballValue = ballValue;
     }
@@ -20,13 +18,16 @@ public class Ball {
         return gameOrder == userOrder;
     }
     
-	public static Ball createBall(int ballOrder, int ballValue) {
+    public static Ball createBall(int ballOrder, int ballValue) {
+        if(!validate(ballValue)) {
+            throw new IllegalArgumentException("공의 값은 1이상 9이하의 정수만 가능합니다.");
+        }
         return new Ball(ballOrder, ballValue);
     }
 
     public static boolean validate(int number) {
-    	return number >= 1 && number <= 9;
-	}
+        return number >= 1 && number <= 9;
+    }
 
     public int getOrder() {
         return this.ballOrder;

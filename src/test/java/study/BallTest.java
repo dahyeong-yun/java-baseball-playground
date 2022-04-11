@@ -30,6 +30,17 @@ class BallTest {
         assertEquals(true, Ball.validate(9));
     }
 
+    @Test
+    @DisplayName("공은 유효하지 않은 수를 값으로 가질 수 없다.") 
+    void validateBallValue() {
+    	assertThrows(IllegalArgumentException.class, () -> Ball.createBall(0, 10));
+    	assertThrows(IllegalArgumentException.class, () -> Ball.createBall(0, 0));
+    	
+    	int inputValue = 1;
+    	Ball createdBall = Ball.createBall(0, inputValue);
+    	assertEquals(inputValue, createdBall.getValue());
+    }
+    
     // 어떤 입력이 있을 때, 순서와 값이 맞는지 비교한다.
     // 입력을 통해 생성된 어떤 객체와 Ball 인스턴스를 비교한다.
     // 그냥 같은 객체를 사용자와 게임으로 이름을 구분한다.
