@@ -9,17 +9,20 @@ public class Game {
 	
 	public static Game start() {
 		Game game = new Game();
+		game.createGameBalls();
 		return game;
 	}
 
-	public List<Ball> getBalls() {
+	private void createGameBalls() {
 		gameBalls = new ArrayList<Ball>();
 		
-		gameBalls.add(Ball.createBall(0, 0));
-		gameBalls.add(Ball.createBall(1, 3));
-		gameBalls.add(Ball.createBall(2, 4));
-		
-		return gameBalls;
+		int idx = 0;
+		while(gameBalls.size() <3 )  {
+			gameBalls.add(Ball.createBall(idx++, 7));
+		}
 	}
 
+	public List<Ball> getBalls() {
+		return gameBalls;
+	}
 }
