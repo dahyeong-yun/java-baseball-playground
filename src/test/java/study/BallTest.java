@@ -52,4 +52,19 @@ class BallTest {
         
     	assertEquals(BallStatus.BALL, gameBall.play(userBall));
     }
+    
+    @Test
+    @DisplayName("공의 위치와 값이 같은 경우는 STRIKE 이다.")
+    void isStrike() {
+        int gameValue = 4;
+        int userValue = 4;
+
+        int gameOrder = 2;
+        int userOrder = 2;
+        
+        Ball gameBall = Ball.createBall(gameOrder, gameValue);
+        Ball userBall = Ball.createBall(userOrder, userValue);
+        
+    	assertEquals(BallStatus.STRIKE, gameBall.play(userBall));
+    }
 }

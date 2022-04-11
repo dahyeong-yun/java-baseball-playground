@@ -37,7 +37,9 @@ public class Ball {
         if(!isSameOrder(this.ballOrder, userBall.getOrder()) && isSameValue(this.ballValue, userBall.ballValue)) {
             return BallStatus.BALL;
         }
-
+        if(isSameOrder(this.ballOrder, userBall.getOrder()) && isSameValue(this.ballValue, userBall.ballValue)) {
+            return BallStatus.STRIKE;
+        }
         return BallStatus.NOTHING;
     }
 }
