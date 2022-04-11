@@ -21,6 +21,15 @@ class BallTest {
         assertEquals(ballValue, ball.getValue());
     }
     
+    @Test
+    @DisplayName("공의 값은 1자리 양의 정수인지 체크한다.")
+    void validateValue() {
+        assertEquals(false, Ball.validate(0));
+        assertEquals(false, Ball.validate(10));
+        assertEquals(true, Ball.validate(1));
+        assertEquals(true, Ball.validate(9));
+    }
+
     // 어떤 입력이 있을 때, 순서와 값이 맞는지 비교한다.
     // 입력을 통해 생성된 어떤 객체와 Ball 인스턴스를 비교한다.
     // 그냥 같은 객체를 사용자와 게임으로 이름을 구분한다.
@@ -50,7 +59,7 @@ class BallTest {
         Ball gameBall = Ball.createBall(gameOrder, gameValue);
         Ball userBall = Ball.createBall(userOrder, userValue);
         
-    	assertEquals(BallStatus.BALL, gameBall.play(userBall));
+        assertEquals(BallStatus.BALL, gameBall.play(userBall));
     }
     
     @Test
@@ -65,6 +74,6 @@ class BallTest {
         Ball gameBall = Ball.createBall(gameOrder, gameValue);
         Ball userBall = Ball.createBall(userOrder, userValue);
         
-    	assertEquals(BallStatus.STRIKE, gameBall.play(userBall));
+        assertEquals(BallStatus.STRIKE, gameBall.play(userBall));
     }
 }

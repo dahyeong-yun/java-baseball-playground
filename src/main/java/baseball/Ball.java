@@ -6,13 +6,27 @@ public class Ball {
     private final int ballValue;
 
     private Ball(int ballOrder, int ballValue) {
+    	validate(ballOrder);
+    	
         this.ballOrder = ballOrder;
         this.ballValue = ballValue;
     }
+    
+    private boolean isSameValue(int gameValue, int userValue) {
+        return gameValue == userValue;
+    }
 
-    public static Ball createBall(int ballOrder, int ballValue) {
+    private boolean isSameOrder(int gameOrder, int userOrder) {
+        return gameOrder == userOrder;
+    }
+    
+	public static Ball createBall(int ballOrder, int ballValue) {
         return new Ball(ballOrder, ballValue);
     }
+
+    public static boolean validate(int number) {
+    	return number >= 1 && number <= 9;
+	}
 
     public int getOrder() {
         return this.ballOrder;
@@ -20,14 +34,6 @@ public class Ball {
 
     public Integer getValue() {
         return this.ballValue;
-    }
-
-    private boolean isSameValue(int gameValue, int userValue) {
-        return gameValue == userValue;
-    }
-
-    private boolean isSameOrder(int gameOrder, int userOrder) {
-        return gameOrder == userOrder;
     }
     
     public BallStatus play(Ball userBall) {
