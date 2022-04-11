@@ -31,9 +31,13 @@ public class Ball {
     }
     
     public BallStatus play(Ball userBall) {
-        if(isSameOrder(this.ballOrder, userBall.getOrder()) && isSameValue(this.ballValue, userBall.ballValue)) {
+        if(!isSameOrder(this.ballOrder, userBall.getOrder()) && !isSameValue(this.ballValue, userBall.ballValue)) {
             return BallStatus.NOTHING;
         }
+        if(!isSameOrder(this.ballOrder, userBall.getOrder()) && isSameValue(this.ballValue, userBall.ballValue)) {
+            return BallStatus.BALL;
+        }
+
         return BallStatus.NOTHING;
     }
 }
